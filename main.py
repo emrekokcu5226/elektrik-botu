@@ -28,6 +28,7 @@ def kontrol_et():
     
     print(f"⏳ Yarın ({tarih_norm}) kontrol ediliyor...")
     
+    # DEDAŞ Adresi
     url = "https://api.dedas.com.tr/api/interruptions/getplannedqutages?api-version=2"
     
     payload = {
