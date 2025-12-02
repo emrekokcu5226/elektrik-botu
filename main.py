@@ -1,0 +1,28 @@
+name: Elektrik Kontrolü
+
+on:
+  schedule:
+    # Sabah 08:00 (UTC 05:00)
+    - cron: '0 5 * * *'
+  workflow_dispatch: # Elle çalıştırmak için buton
+
+jobs:
+  calistir:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Depoyu Çek
+        uses: actions/checkout@v3
+
+      - name: Python Kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Kütüphaneleri Yükle
+        run: pip install requests
+
+      - name: Kontrolü Başlat
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        run: python main.py
